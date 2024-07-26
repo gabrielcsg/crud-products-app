@@ -24,6 +24,8 @@ O banco de dados utilizado foi o Postgres.
 2. Execute o comando:
 
    ```bash
+   docker compose up --build
+   # ou
    docker-compose up --build
    ```
 
