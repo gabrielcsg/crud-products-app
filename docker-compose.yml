@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  react-app:
+    build:
+      context: ./crud-products-front
+      dockerfile: Dockerfile
+    ports:
+      - '3000:80'
+    volumes:
+      - .:/app
+    container_name: react-app
+  go-api:
+    build:
+      context: ./crud-products-api
+      dockerfile: Dockerfile
+    ports:
+      - '3333:3333'
+    depends_on:
+      - postgres
+  postgres:
+    image: 'postgres'
+    container_name: 'postgres'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=crud-products
+      - POSTGRES_DB=products
+    ports:
+      - '5432:5432'

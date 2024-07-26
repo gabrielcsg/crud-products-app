@@ -1,0 +1,18 @@
+# bin
+main
+
+# deps
+vendor
+
+# editor
+.vscode
+.idea
+
+# builds
+*.out
+*.exe
+
+# temp and bckp
+*.log
+*.tmp
+*~
