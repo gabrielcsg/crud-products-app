@@ -12,13 +12,30 @@ export const Content = styled.div`
   padding: 0 1.5rem;
 
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
 
   button {
     height: 50px;
     background-color: transparent;
-    border: 1px solid ${props => props.theme['gray-700']}
+    border: 1px solid ${(props) => props.theme['gray-700']};
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    background-color: transparent;
+    color: ${(props) => props.theme['white']};
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+
+    &.active {
+      border-bottom-color: ${(props) => props.theme['gray-800']};
+      color: ${(props) => props.theme['gray-800']};
+    }
   }
 `;
 

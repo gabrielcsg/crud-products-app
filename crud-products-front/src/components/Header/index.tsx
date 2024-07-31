@@ -1,30 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { Button } from '../Button';
+import { NavLink } from 'react-router-dom';
 
 import * as Styles from './styles';
 
-interface Props {
-  title: string;
-}
-
-export function Header({ title }: Props) {
-  const navigate = useNavigate();
-
-  function handleNewProduct() {
-    navigate('/new');
-  }
-
-  function handleProducts() {
-    navigate('/');
-  }
-
+export function Header() {
   return (
     <Styles.Container>
       <Styles.Content>
-        <Styles.Title>{title}</Styles.Title>
         <Styles.Buttons>
-          <Button title="Produtos" onClick={handleProducts} />
-          <Button title="Novo Produto" onClick={handleNewProduct} />
+          <NavLink to="/">Produtos</NavLink>
+          <NavLink to="/new">Novo Produto</NavLink>
         </Styles.Buttons>
       </Styles.Content>
     </Styles.Container>

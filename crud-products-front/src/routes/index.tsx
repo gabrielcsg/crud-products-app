@@ -3,20 +3,27 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Products } from '../pages/Products';
 import { NewProduct } from '../pages/NewProduct';
 import { EditProduct } from '../pages/EditProduct';
+import { DefaultLayout } from '../layouts/DefaultLayout';
 
 export function Routes() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Products />,
-    },
-    {
-      path: '/new',
-      element: <NewProduct />,
-    },
-    {
-      path: '/update/:productId',
-      element: <EditProduct />,
+      element: <DefaultLayout />,
+      children: [
+        {
+          path: '/',
+          element: <Products />,
+        },
+        {
+          path: '/new',
+          element: <NewProduct />,
+        },
+        {
+          path: '/update/:productId',
+          element: <EditProduct />,
+        },
+      ],
     },
   ]);
 

@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { Header } from '../../components/Header';
 
 import { ProductDataSchema, productSchema } from '../../models/Product';
 import {
@@ -17,6 +16,7 @@ import { useEffect } from 'react';
 import { formMaskMoney } from '../../utils/masks';
 import { formatCurrency } from '../../utils/currency';
 import { isAxiosError } from 'axios';
+import { PageTitle } from '../../components/PageTitle';
 
 export function EditProduct() {
   const navigate = useNavigate();
@@ -86,60 +86,54 @@ export function EditProduct() {
   }, [productId, reset, navigate]);
 
   return (
-    <div>
-      <Header title="Editar Produto" />
-      <Styles.Container>
-        <form onSubmit={handleSubmit(handleCreateProduct)}>
-          <Input
-            placeholder="Código"
-            error={errors?.code?.message}
-            required
-            {...register('code')}
-          />
-          <Input
-            placeholder="Nome"
-            error={errors?.name?.message}
-            required
-            {...register('name')}
-          />
-          <Input
-            type="number"
-            min={0}
-            placeholder="Estoque Total"
-            error={errors?.totalStock?.message}
-            required
-            {...register('totalStock', { valueAsNumber: true })}
-          />
-          <Input
-            type="number"
-            min={0}
-            placeholder="Estoque de Corte"
-            error={errors?.cutStock?.message}
-            required
-            {...register('cutStock', { valueAsNumber: true })}
-          />
-          <Input
-            placeholder="Preço de"
-            error={errors?.priceFrom?.message}
-            onKeyUp={formMaskMoney}
-            required
-            {...register('priceFrom')}
-          />
-          <Input
-            placeholder="Preço por"
-            error={errors?.pricePer?.message}
-            onKeyUp={formMaskMoney}
-            required
-            {...register('pricePer')}
-          />
+    <Styles.Container>
+      <PageTitle title="Editar Produto" />
+      <form onSubmit={handleSubmit(handleCreateProduct)}>
+        <Input
+          placeholder="Código"
+          error={errors?.code?.message}
+          required
+          {...register('code')}
+        />
+        <Input
+          placeholder="Nome"
+          error={errors?.name?.message}
+          required
+          {...register('name')}
+        />
+        <Input
+          type="number"
+          min={0}
+          placeholder="Estoque Total"
+          error={errors?.totalStock?.message}
+          required
+          {...register('totalStock', { valueAsNumber: true })}
+        />
+        <Input
+          type="number"
+          min={0}
+          placeholder="Estoque de Corte"
+          error={errors?.cutStock?.message}
+          required
+          {...register('cutStock', { valueAsNumber: true })}
+        />
+        <Input
+          placeholder="Preço de"
+          error={errors?.priceFrom?.message}
+          onKeyUp={formMaskMoney}
+          required
+          {...register('priceFrom')}
+        />
+        <Input
+          placeholder="Preço por"
+          error={errors?.pricePer?.message}
+          onKeyUp={formMaskMoney}
+          required
+          {...register('pricePer')}
+        />
 
-          <Button
-            title="Salvar"
-            type="submit"
-            isLoading={isSubmitting}
-          />
-        </form>
-      </Styles.Container>
-    </div>
+        <Button title="Salvar" type="submit" isLoading={isSubmitting} />
+      </form>
+    </Styles.Container>
   );
 }

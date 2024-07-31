@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const ProductsContainer = styled.main`
   width: 100%;
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin: 2rem auto 0;
   padding: 0 1.5rem;
+  overflow-x: auto;
 `;
 
 export const ProductsTable = styled.table`
@@ -12,6 +13,11 @@ export const ProductsTable = styled.table`
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 1.5rem;
+  overflow: auto hidden;
+
+  @media (max-width: 1128px) {
+    white-space: nowrap;
+  }
 
   tr {
     th {
