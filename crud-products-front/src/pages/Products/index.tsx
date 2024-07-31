@@ -53,50 +53,54 @@ export function Products() {
     <Styles.ProductsContainer>
       <PageTitle title="Produtos" />
       {isLoading && <Loading />}
-      <Styles.ProductsTable>
-        <tbody>
-          <tr>
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Estoque Total</th>
-            <th>Estoque de Corte</th>
-            <th>Estoque Disponivel</th>
-            <th>Preço de</th>
-            <th>Preço por</th>
-            <th>Criado em</th>
-            <th>Atualizado em</th>
-            <th></th>
-          </tr>
-
-          {products.map((product) => (
-            <tr key={product.id}>
-              <td>
-                <strong>{product.code}</strong>
-              </td>
-              <td>{product.name}</td>
-              <td>{product.totalStock}</td>
-              <td>{product.cutStock}</td>
-              <td>{product.availableStock}</td>
-              <td>{formatCurrency(product.priceFrom)}</td>
-              <td>{formatCurrency(product.pricePer)}</td>
-              <td>{formatDate(product.createdAt)}</td>
-              <td>{formatDate(product.updatedAt)}</td>
-              <td>
-                <Styles.Actions>
-                  <Button
-                    onClick={() => handleEditProduct(product.id)}
-                    title="Editar"
-                  />
-                  <Button
-                    onClick={() => handleRemoveProduct(product.id)}
-                    title="Deletar"
-                  />
-                </Styles.Actions>
-              </td>
+      <Styles.ProductsContent>
+        <Styles.ProductsTable>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Estoque Total</th>
+              <th>Estoque de Corte</th>
+              <th>Estoque Disponivel</th>
+              <th>Preço de</th>
+              <th>Preço por</th>
+              <th>Criado em</th>
+              <th>Atualizado em</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </Styles.ProductsTable>
+          </thead>
+
+          <tbody>
+            {products.map((product) => (
+              <tr key={product.id}>
+                <td>
+                  <strong>{product.code}</strong>
+                </td>
+                <td>{product.name}</td>
+                <td>{product.totalStock}</td>
+                <td>{product.cutStock}</td>
+                <td>{product.availableStock}</td>
+                <td>{formatCurrency(product.priceFrom)}</td>
+                <td>{formatCurrency(product.pricePer)}</td>
+                <td>{formatDate(product.createdAt)}</td>
+                <td>{formatDate(product.updatedAt)}</td>
+                <td>
+                  <Styles.Actions>
+                    <Button
+                      onClick={() => handleEditProduct(product.id)}
+                      title="Editar"
+                    />
+                    <Button
+                      onClick={() => handleRemoveProduct(product.id)}
+                      title="Deletar"
+                    />
+                  </Styles.Actions>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Styles.ProductsTable>
+      </Styles.ProductsContent>
     </Styles.ProductsContainer>
   );
 }
